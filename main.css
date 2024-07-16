@@ -1,0 +1,15 @@
+#petCards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
+  margin: 20px;
+  text-align: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.pet-name {
+  background-color: lightgrey;
+  color: grey;
+}
