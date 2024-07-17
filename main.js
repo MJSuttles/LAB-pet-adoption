@@ -273,12 +273,12 @@ const pets = [
 
   const renderToDom = (divId, htmlToRender) => {
     const selectedDiv = document.querySelector(divId);
-    selectedDiv.innerHTML = htmltoRender;
+    selectedDiv.innerHTML = htmlToRender;
   };
 
   const cardsOnDom = (array) => {
     let domString = "";
-    for (const member of array) {
+    for (const pet of array) {
       domString += `<div class="card" style="width: 18rem;">
       <h2 class="pet-name">${pet.name}</h2>
       <div class="card-body">
@@ -293,14 +293,14 @@ const pets = [
     renderToDom("#petCards", domString);
   };
 
-const filter = (array, colorString) => {
-  const colorArray = [];
+const filter = (array, petType) => {
+  const petArray = [];
   for (const member of array) {
-    if (member.color === colorString) {
-      colorArray.push(member);
+    if (member.typeOfPet === petType) {
+      petArray.push(member);
     }
   }
-  return colorArray;
+  return petArray;
 };
 
 const showAllButton = document.querySelector("#showAll");
@@ -313,16 +313,16 @@ showAllButton.addEventListener("click", () => {
 });
 
 showCatsButton.addEventListener("click", () => {
-  const cats = filter(pets, "cats");
+  const cats = filter(pets, "cat");
   cardsOnDom(cats);
 });
 
 showDogsButton.addEventListener("click", () => {
-  const dogs = filter(pets, "dogs");
+  const dogs = filter(pets, "dog");
   cardsOnDom(dogs);
 });
 
 showDinosButton.addEventListener("click", () => {
-  const dinos = filter(pets, "dinos");
+  const dinos = filter(pets, "dino");
   cardsOnDom(dinos);
 });
