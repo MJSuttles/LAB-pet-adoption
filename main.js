@@ -5,7 +5,7 @@ const pets = [
       name: "Dusty",
       color: "Green",
       specialSkill: "Gives sincere apologies.",
-      typeofPet: "cat",
+      typeOfPet: "cat",
       favorite: false
     },
     {
@@ -239,7 +239,7 @@ const pets = [
       name: "Chloe",
       color: "Green",
       specialSkill: "Admits he is wrong",
-      typeOfPets: "dino",
+      typeOfPet: "dino",
       favorite: false
     },
     {
@@ -271,6 +271,11 @@ const pets = [
     }
   ];
 
+  const renderToDom = (divId, htmlToRender) => {
+    const selectedDiv = document.querySelector(divId);
+    selectedDiv.innerHTML = htmltoRender;
+  };
+  
   const targetingPets = document.querySelector("#petCards");
 
 let domString = "";
@@ -288,3 +293,34 @@ for (const pet of pets) {
 };
 
 targetingPets.innerHTML = domString;
+
+const filter = (array, colorString) => {
+  const colorArray = [];
+  for (const pet of pets) {
+    if (pet.color === colorString) {
+      colorArray.push(pet);
+    }
+  }
+  return colorArray;
+};
+
+const showAllButton = document.querySelector(".btn btn-all");
+const showCatsButton = document.querySelector(".btn btn-cats");
+const showDogsButton = document.querySelector(".btn btn-dogs");
+const showDinosButton = document.querySelector(".btn btn-dinos");
+
+showAllButton.addEventListener("click", () => {
+  targetingPets(pets);
+});
+
+showCatsButton.addEventListener("click", () => {
+  const cats = filter(pets, "cats");
+});
+
+showDogsButton.addEventListener("click", () => {
+  const dogs = filter(pets, "dogs");
+});
+
+showDinosButton.addEventListener("click", () => {
+  const dinos = filter(pets, "dinos");
+});

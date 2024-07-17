@@ -13,3 +13,14 @@
   background-color: lightgrey;
   color: grey;
 }
+
+.btn-pet-type {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  gap: 60px;
+}
