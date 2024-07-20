@@ -284,9 +284,10 @@ const pets = [
       <div class="card-body">
         <img src=${pet.img} class="card-img-top" alt=${pet.name}>
           <h5 class="card-title">${pet.color}</h5>
-          <p class="card-text">${pet.SpecialSkill}></p>
+          <p class="card-text">${pet.specialSkill}></p>
       </div>
       <h2 class="pet-type">${pet.typeOfPet}</h2>
+      <button class="btn btn-danger" id="delete--${pet.id}">Delete</button>
     </div>`;
     }
     
@@ -302,6 +303,36 @@ const filter = (array, petType) => {
   }
   return petArray;
 };
+
+const form = document.querySelector("form");
+
+const createPet = (e) => {
+  e.preventDefault();
+  const newPetObj = {
+    id: pets.length + 1,
+    img: document.querySelector("#exampleImg").value,
+    name: document.querySelector("#exampleName").value,
+    color: document.querySelector("#exampleColor").value,
+    specialSkill: document.querySelector("#exampleSpecialSkill").value,
+    typeOfPet: document.querySelector("#exampleFavorite").value
+  };
+  pets.push(newPetObj);
+  cardsOnDom(pets);
+  form.reset();
+};
+form.addEventListener("submit", createPet);
+
+const petCards = document.querySelector("#petCards");
+petCards.addEventListener("click", (e) => {
+  if (e.target.id.includes("delete")) {
+    const [, id] = e.target.id.split("--");
+    const index = pets.findIndex((e) => e.id === Number(id));
+    pets.splice(index, 1);
+    cardsOnDom(pets);
+  }
+});
+
+
 
 const showAllButton = document.querySelector("#showAll");
 const showCatsButton = document.querySelector("#showCats");
