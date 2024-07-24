@@ -34,3 +34,18 @@
   height: 40px;
   
 }
+
+.pet-type-footer--dog {
+  background-color: blue;
+  color: white;
+}
+
+.pet-type-footer--cat {
+  background-color: yellow;
+  color: black;
+}
+
+.pet-type-footer--dino {
+  background-color: red;
+  color: white;
+}

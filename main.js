@@ -288,9 +288,9 @@ const pets = [
       <div class="card-body">
         <img src=${pet.img} class="card-img-top" alt=${pet.name}>
           <h5 class="card-title">${pet.color}</h5>
-          <p class="card-text">${pet.specialSkill}></p>
+          <p class="card-text">${pet.specialSkill}</p>
       </div>
-      <h2 class="pet-type">${pet.typeOfPet}</h2>
+      <h2 class="pet-type pet-type-footer--${pet.typeOfPet}">${pet.typeOfPet}</h2>
       <button class="btn btn-danger" id="delete--${pet.id}">Delete</button>
     </div>`;
     }
@@ -338,7 +338,7 @@ petCards.addEventListener("click", (e) => { // adds Event Listener to listen for
     const [, id] = e.target.id.split("--");  // Destructures to split "ID" and card position, remove wording, and keep position number only
     const index = pets.findIndex((e) => e.id === Number(id));  // Adds logic to remove from array via findIndex method - also makes sure that card being deleted matches the card's ID number
     pets.splice(index, 1);  // modifies original array by removing index (the one deleted card) only
-    cardsOnDom(pets);  // Repaints DOm with the updated array
+    cardsOnDom(pets);  // Repaints DOM with the updated array
   }
 });
 
